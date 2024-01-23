@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/RIP_React_Frontend/static/css/main.9d7671c5.css",
-    "main.js": "/RIP_React_Frontend/static/js/main.6ae4c137.js",
+    "main.js": "/RIP_React_Frontend/static/js/main.f8a8c432.js",
     "index.html": "/RIP_React_Frontend/index.html",
     "main.9d7671c5.css.map": "/RIP_React_Frontend/static/css/main.9d7671c5.css.map",
-    "main.6ae4c137.js.map": "/RIP_React_Frontend/static/js/main.6ae4c137.js.map"
+    "main.f8a8c432.js.map": "/RIP_React_Frontend/static/js/main.f8a8c432.js.map"
   },
   "entrypoints": [
     "static/css/main.9d7671c5.css",
-    "static/js/main.6ae4c137.js"
+    "static/js/main.f8a8c432.js"
   ]
 }

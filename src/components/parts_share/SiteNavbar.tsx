@@ -6,7 +6,7 @@ const SiteNavbar: FC = () => {
     return (
         <Navbar bg="light" expand="lg" className="skrug">
             <Container>
-                <Navbar.Brand href="#/">
+                <Navbar.Brand href="#/info">
                     <img width={30} height={30} src={process.env.PUBLIC_URL + "/src/home_button.png"} alt="Home Button" />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />

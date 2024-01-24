@@ -10,19 +10,19 @@ import useFetch from "../../hooks_and_utils/useFetch";
 import { SoftAPI } from "../../api";
 import LoadingPopUp from "../popups/LoadingPopUp";
 import MOCK from "../../MOCK";
+import catalogFilter from "../../hooks_and_utils/catalogFilters"
 
 
 const Catalog: FC = () => {
     const [soft, setSoft] = useState<any[]>([]);
     const [searchValue, setSearchValue] = useState<string>('');
-    const [priceSort, setPriceSort] = useState<string>('');
+    const [priceSort, setPriceSort] = useState<"up" | "down">("up");
 
     const [loadingShown, setLoadingShown] = useState<boolean>(false);
 
     // Fetch (for downloading soft and search) logic:
     const callback = (data: any) => {
         setSoft(data.soft_list);
-        console.log(data.soft_list);
         setLoadingShown(false);
     };
 
@@ -37,18 +37,20 @@ const Catalog: FC = () => {
     }, []);
 
     // Filter logic:
-    const handleFilter = (dir: string) => {
+    const handleFilter = (dir: "up" | "down") => {
         setPriceSort(dir);
         doFetch();
     };
 
-    // Popup and mock logic:
+    // Popup and mock filtering logic:
     const handleClose = () =>
         loading ? undefined : setLoadingShown(false);
 
     useEffect(() => {
         if (loading || error) setLoadingShown(true);
-        if (error) setSoft(MOCK);
+        if (error) {
+            setSoft(catalogFilter(MOCK, searchValue, priceSort));
+        }
     }, [loading, error]);
 
     return (

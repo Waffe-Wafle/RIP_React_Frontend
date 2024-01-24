@@ -3,11 +3,25 @@ import useSetCSRFCookie from "./hooks_and_utils/useSetCSRFCookie";
 import Catalog from "./components/pages/Catalog";
 import Soft from "./components/pages/Soft";
 import Info from "./components/pages/Info";
+import {useEffect} from "react";
 
+
+const { invoke } = window.__TAURI__.tauri;
 
 
 const App = () => {
-    useSetCSRFCookie();
+    useEffect(()=> {
+        invoke('tauri', {cmd: 'create'})
+            .then(response => console.log(response))
+            .catch(err => console.log(err))
+
+        return () => {
+            invoke('tauri', {cmd: 'close'})
+                .then(response => console.log(response))
+                .catch(err => console.log(err))
+        }
+    }, [])
+    
     return (
         <div className="App">
             <HashRouter>
